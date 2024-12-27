@@ -1,0 +1,63 @@
+### Extracted Commands, Steps, and Codes from Cyber Security Report
+
+#### 1. Cross-Site Scripting (XSS)
+*Description:* Exploiting unsanitized user input in the product search bar.
+- *Command:*
+  html
+  <iframe src="javascript:alert('xss')">
+  
+- *Remediation Steps:*
+  - Escape and sanitize all user inputs.
+  - Implement a Content Security Policy (CSP).
+
+#### 2. Enumeration to Find Admin Path
+*Objective:* Discover hidden paths such as admin pages.
+- *Commands:*
+  bash
+  dirb https://juice-shop.herokuapp.com /usr/share/wordlists/dirb/common.txt -v | grep admin
+  
+- *Outcome:* Identification of admin functionalities and sensitive paths.
+
+#### 3. Brute Force on Admin Credentials
+*Description:* Exploit lack of rate-limiting to repeatedly guess credentials.
+- *Evidence:* Logs of brute-force attempts and successful login.
+- *Remediation Steps:*
+  - Implement account lockouts after failed attempts.
+  - Add CAPTCHA to login pages.
+
+#### 4. SQL Injection for Admin Login
+*Description:* Gain unauthorized admin access using SQL injection.
+- *Steps:*
+  - Go to GitHub repo for SQL injection payloads.
+  - Use the following credentials:
+    - *Username:* 'OR 1=1-- -
+    - *Password:* 'OR 1=1-- -
+
+#### 5. Manipulating Feedback
+*Description:* Access and modify the administration feedback section.
+- *Steps:*
+  - Navigate to the administration section.
+  - Click on 5-star feedback to view and interact with.
+
+#### 6. Admin Section Exploration
+*Description:* Analyze registered users and specific codes.
+- *Steps:*
+  - Access admin section after login.
+  - Review and manipulate lines (e.g., 3, 4, 5) within the admin code view.
+
+#### 7. Shop Basket Manipulation
+*Description:* Alter the shop basket functionality.
+- *Steps:*
+  - Inspect using browser developer tools.
+  - Modify network requests:
+    - Change values such as 192.168.47.1 1 to 2.
+  - Send modified request to complete exploitation.
+
+### Tools Mentioned
+1. *Burp Suite:* Intercepting and analyzing requests.
+2. *OWASP ZAP:* Automated vulnerability scanning.
+3. *Dirb and Gobuster:* For URL structure enumeration.
+4. *Developer Tools:* Used for inspecting and modifying network requests.
+
+### Summary
+These steps highlight the methodologies used for penetration testing the OWASP Juice Shop application. For effective learning, each exploitation method includes its impact, commands, and recommended fixes. Regular testing and proactive measures ensure enhanced security posture.
